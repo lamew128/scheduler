@@ -7,7 +7,6 @@ export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    // you may put the line below, but will have to remove/comment hardcoded appointments variable
     appointments: {}
   });
   
@@ -49,11 +48,9 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    //debugger
     const updatedDays = [...state.days].map((day) => {
       return {...day, spots: day.name === state.day ? day.spots+1 : day.spots}
     });
-
 
     return axios.delete(`/api/appointments/${id}`)
     .then(() => {
