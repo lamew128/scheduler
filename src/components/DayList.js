@@ -11,6 +11,7 @@ const lists = props.days.map((item) =>
       spots={item.spots} 
       selected={item.name === props.value}
       setDay={props.onChange}
+      data-testid="day"
     />
   );
 
