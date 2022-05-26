@@ -18,13 +18,22 @@ Powered by react.
 5. Users can delete an interview by clicking the delete button while hovering; A confirm message will show up
 6. Server error handling
 
+## Setup
+
+Install dependencies with `npm install`.
+
+## Running Webpack Development Server
+
+```sh
+npm start
+```
+
 ## Dependencies
 
 - axios: ^0.27.2
-- classnames: ^2.3.1
 - normalize.css: ^8.0.1
 - react: ^16.14.0
 - react-dom: ^16.14.0
-- react-hooks-testing-library: ^0.6.0
+- @testing-library/react-hooks: ^8.0.0
 - react-script: ^2.0.5
 - react-scripts: 3.0.0

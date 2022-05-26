@@ -7,17 +7,28 @@ export default function Form(props) {
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
+  /**
+  * Reset the from with no input.
+  */
   const reset = function() {
     setStudent("");
     setInterviewer(null);
     setError("");
   }
   
+  /**
+  * Call reset while the cancel button is clicked.
+  */
   const cancel = function() {
     reset();
     props.onCancel();
   }
 
+  /**
+  * Check if there is missing input while the save button is clicked.
+  * if yes, return an error message.
+  * if no, clear the error and call props.onSave.
+  */
   function validate() {
     if (student === "") {
       setError("Student name cannot be blank");

@@ -24,6 +24,10 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  /**
+  * Add the appointment to the api server.
+  * @param {{name: string, interviewer: Object}}
+  */
   function save(name, interviewer) {
     transition(SAVING);
     const interview = {
@@ -37,6 +41,9 @@ export default function Appointment(props) {
     .catch(error => transition(ERROR_SAVE, true));
   }
 
+  /**
+  * Delete the appointment and update the api server.
+  */
   function deleteAppoinment() {
     transition(DELETING, true);
     props.cancelInterview(props.id)

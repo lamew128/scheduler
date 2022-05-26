@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import React, { useEffect } from "react";
 import "components/Application.scss";
 
 import DayList from "components/DayList";
@@ -10,7 +8,7 @@ import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
 
-  const {state, setState, setDay, bookInterview, cancelInterview } = useApplicationData();
+  const {state, setDay, bookInterview, cancelInterview, getInfo } = useApplicationData();
   
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
@@ -32,13 +30,9 @@ export default function Application(props) {
 
   useEffect(() => {
     //axios request here...
-    Promise.all([
-      axios.get(`http://localhost:8001/api/days`),
-      axios.get(`http://localhost:8001/api/appointments`),
-      axios.get(`http://localhost:8001/api/interviewers`)
-    ]).then((all) => {
-      setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
-    });
+    getInfo();
+    //React Hook useEffect has a missing dependency: 'getInfo'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [])
 
   
