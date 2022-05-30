@@ -9,10 +9,16 @@ export default function useVisualMode(initial) {
   * @param {{change: string, replace: Boolean}}
   */
   function transition(change, replace = false) {
+    const newHistory = [...history];
     if (replace) {
-      setHistory([history].pop());
+      newHistory.pop();
+      setHistory(newHistory);
     } 
-    history.push(change);
+    newHistory.push(change);
+    console.log("before: ",history);
+    setHistory(newHistory);
+    console.log("new: ",newHistory);
+    //history.push(change);
     setMode(change);
   }
 
@@ -21,8 +27,13 @@ export default function useVisualMode(initial) {
   */
   function back() {
     if (history.length > 1) {
-      history.pop();
-      setMode(history[history.length-1]);
+      console.log("before: ",history);
+      const newHistory = [...history];
+      newHistory.pop();
+      setHistory(newHistory);
+      console.log("new: ",newHistory);
+      //history.pop();
+      setMode(history[history.length-2]);
     }
   }
 
